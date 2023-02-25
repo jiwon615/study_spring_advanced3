@@ -2,15 +2,20 @@ package hello.aop;
 
 import hello.aop.order.OrderRepository;
 import hello.aop.order.OrderService;
+import hello.aop.order.aop.AspectV1;
+import hello.aop.order.aop.AspectV2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+//@Import(AspectV1.class)
+@Import(AspectV2.class)
 @Slf4j
 @SpringBootTest
 public class AopTest {
@@ -22,7 +27,6 @@ public class AopTest {
     OrderRepository orderRepository;
 
     @Test
-    @DisplayName("AOP 관련 코드 작성하지 않았으므로, 프록시도 적용되지 않고 결과도 false 반환")
     void aopInfo() {
         log.info("isAopProxy, orderService={}", AopUtils.isAopProxy(orderService)); // false
         log.info("isAopProxy, orderRepository={}", AopUtils.isAopProxy(orderRepository)); // false
