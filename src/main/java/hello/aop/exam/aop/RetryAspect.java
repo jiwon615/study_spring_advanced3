@@ -14,7 +14,7 @@ public class RetryAspect {
     public Object doRetry(ProceedingJoinPoint joinPoint, Retry retry) throws Throwable {
         log.info("[retry] {} retry={}", joinPoint.getSignature(), retry);
 
-        int maxRetry = retry.value(); // 애노테이션에서 기본값으로 설정했던 3 받아옴
+        int maxRetry = retry.value();
         Exception exceptionHolder = null;
 
         for (int retryCnt=1; retryCnt<=maxRetry; retryCnt++) {
