@@ -10,7 +10,7 @@ import org.springframework.aop.framework.ProxyFactory;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * JDK 동적 프록시의 한계
+ * JDK 동적 프록시와 CGLIB 의 타입 캐스팅 테스트
  */
 @Slf4j
 public class ProxyCastingTest {
